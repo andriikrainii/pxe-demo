@@ -37,7 +37,7 @@ identifiers agree across all of them.
 ## Publishing
 
 GitHub Pages, serving from the repository root on the default branch.
-`.nojekyll` is present so that Pages serves files beginning with `_`.
+No file starts with an underscore, so no `.nojekyll` is needed.
 
 ## Note on personal data
 
