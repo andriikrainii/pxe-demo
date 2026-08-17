@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>PXEngine — Presentation guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A3 landscape;margin:9mm}
+:root{--ink:#15161A;--ink2:#494C54;--ink3:#7C808A;--line:#DCDDE1;--line2:#EBECEF;
+--soft:#F7F7F9;--gold:#8A6D1F;--goldbg:#FBF6E8;--goldline:#E5D8B0;--mark:#FCC311}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:Inter,system-ui,sans-serif;
+-webkit-font-smoothing:antialiased;font-size:10px;line-height:1.45}
+.sheet{width:1580px;margin:0 auto;padding:26px 30px 30px}
+/* header */
+.top{display:flex;align-items:flex-end;justify-content:space-between;
+border-bottom:2px solid var(--ink);padding-bottom:13px}
+.logo{height:21px;width:auto;display:block;margin-bottom:9px}
+.kicker{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1{font-size:25px;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin-top:5px}
+.sub{font-size:11.5px;color:var(--ink2);margin-top:5px;max-width:700px}
+.ws{font-size:10.5px;color:var(--ink2);margin-top:8px;max-width:700px;background:var(--goldbg);
+border:1px solid var(--goldline);border-radius:5px;padding:6px 10px}
+.ws b{color:var(--ink);font-weight:600}
+.stat{text-align:right;font-size:9px;color:var(--ink3);line-height:1.7}
+.stat b{display:block;font-size:23px;color:var(--ink);font-weight:600;letter-spacing:-.02em;
+line-height:1.1}
+/* arc strip */
+.arcwrap{margin:17px 0 0}
+.arclbl{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);
+font-weight:700;margin-bottom:6px}
+.arc{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}
+.arc div{position:relative;text-align:center}
+.arc span{display:block;font-size:10.5px;font-weight:600;background:var(--goldbg);
+border:1px solid var(--goldline);border-radius:100px;padding:3px 0;color:var(--gold)}
+.arc div::after{content:"\203A";position:absolute;top:2px;right:-7px;color:#C3C6CC;font-size:12px}
+.arc div:last-child::after{display:none}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;margin-top:16px}
+.card{border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;
+flex-direction:column;position:relative;background:#fff}
+.card::after{content:"";position:absolute;top:26px;right:-9px;width:9px;height:1px;
+background:var(--goldline);z-index:2}
+.card:last-child::after{display:none}
+.chead{background:var(--soft);border-bottom:1px solid var(--line);padding:9px 11px 10px}
+.pill{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.no{width:19px;height:19px;border-radius:50%;background:var(--ink);color:#fff;font-size:10px;
+font-weight:700;display:flex;align-items:center;justify-content:center}
+.min{font-size:8.5px;font-weight:700;color:var(--gold);background:var(--goldbg);
+border:1px solid var(--goldline);border-radius:4px;padding:1px 6px;letter-spacing:.03em}
+.cname{font-size:12.5px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.cstep{font-size:8.5px;color:var(--ink3);margin-top:3px;letter-spacing:.03em}
+.cws{margin-top:7px;padding-top:6px;border-top:1px solid var(--line)}
+.cws span{display:block;font-size:9px;font-weight:600;color:var(--gold);line-height:1.35}
+.cws em{display:block;font-size:8px;font-style:normal;color:var(--ink3);margin-top:1px;
+letter-spacing:.05em;text-transform:uppercase}
+.cbody{padding:10px 11px 11px;display:flex;flex-direction:column;gap:8px;flex:1}
+.f{font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);
+font-weight:700;margin-bottom:2px}
+.v{font-size:10px;color:var(--ink2);line-height:1.5}
+.v b{color:var(--ink);font-weight:600}
+.q{background:var(--goldbg);border:1px solid var(--goldline);border-radius:5px;padding:7px 9px}
+.q .f{color:var(--gold)}
+.q .v{color:var(--ink);font-weight:500;font-style:italic}
+.ids{margin-top:auto;padding-top:8px;border-top:1px solid var(--line2)}
+.ids span{display:inline-block;font-size:8px;font-weight:600;color:var(--gold);
+font-variant-numeric:tabular-nums;margin:0 4px 2px 0}
+/* lower bands */
+.bands{display:grid;grid-template-columns:1fr 1.35fr;gap:14px;margin-top:16px}
+.band{border:1px solid var(--line);border-radius:8px;padding:13px 15px 14px}
+.band > h2{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+font-weight:700;margin-bottom:2px}
+.band > p{font-size:9.5px;color:var(--ink3);margin-bottom:9px}
+.pf{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px}
+.pf div{font-size:10px;color:var(--ink2);line-height:1.45;padding-left:13px;position:relative}
+.pf div::before{content:"";position:absolute;left:0;top:5px;width:5px;height:5px;
+border-radius:1px;background:var(--mark)}
+.pf b{color:var(--ink);font-weight:600;display:block}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+.qa div{font-size:10px;color:var(--ink2);line-height:1.45}
+.qa b.qq{display:block;color:var(--ink);font-weight:600;margin-bottom:1px}
+.qa .ref{font-size:8px;font-weight:600;color:var(--gold);font-variant-numeric:tabular-nums}
+footer{margin-top:13px;padding-top:9px;border-top:1px solid var(--line);
+font-size:8.5px;color:var(--ink3);display:flex;justify-content:space-between}
+</style></head><body><div class="sheet">
+
+<div class="top">
+  <div><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 118" fill="none" role="img" aria-label="PXEngine"><path fill="#15161A" d="M1.0,59.9L1.0,2.8L14.8,3.2C30.2,3.5 33.2,4.7 36.4,11.4C38.7,16.2 38.8,60.6 36.5,64.9C34.7,68.5 29.4,71.0 22.4,71.7L17.0,72.3L17.0,94.6L17.0,117.0L9.0,117.0L1.0,117.0L1.0,59.9ZM89.6,116.1C89.3,115.6 85.7,107.8 81.6,98.7L74.3,82.2L79.1,71.3C81.8,65.4 83.9,59.8 83.9,59.0C83.9,58.2 81.8,52.6 79.1,46.7L74.3,35.9L81.9,19.0L89.4,2.0L99.2,2.0C106.4,2.0 109.0,2.3 109.0,3.2C109.0,3.9 103.5,16.8 96.9,31.8L84.7,59.1L97.4,87.4C104.3,103.0 110.0,116.0 110.0,116.4C110.0,117.4 90.2,117.1 89.6,116.1ZM219.0,114.8C215.7,113.1 213.9,111.3 212.2,108.0L210.0,103.5L210.2,57.3C210.5,12.3 210.6,11.1 212.6,8.3C216.6,2.9 220.6,1.0 228.2,1.0C237.3,1.0 242.0,3.3 244.9,9.3C246.8,13.2 247.0,15.4 247.0,30.8L247.0,48.0L239.0,48.0L231.0,48.0L231.0,32.2C231.0,15.7 230.4,12.6 227.6,14.9C226.2,16.1 226.0,21.2 226.0,58.4C226.0,81.5 226.4,101.1 226.9,101.9C227.4,102.7 228.5,103.0 229.4,102.7C231.7,101.8 231.8,83.0 229.5,83.0C228.3,83.0 228.0,81.6 228.0,76.5L228.0,70.0L237.5,70.0L247.0,70.0L247.0,93.0L247.0,116.0L243.4,116.0C241.3,116.0 239.3,115.4 238.6,114.5C237.6,113.1 237.0,113.2 233.5,115.0C228.4,117.6 224.5,117.5 219.0,114.8ZM113.0,59.0L113.0,2.0L128.0,2.0L143.0,2.0L143.0,8.5L143.0,15.0L136.0,15.0L129.0,15.0L129.0,34.0L129.0,53.0L134.5,53.0L140.0,53.0L140.0,59.0L140.0,65.0L134.5,65.0L129.0,65.0L129.0,83.5L129.0,102.0L136.5,102.0L144.0,102.0L144.0,109.0L144.0,116.0L128.5,116.0L113.0,116.0L113.0,59.0ZM155.0,59.0L155.0,2.0L164.0,2.0L172.9,2.0L173.5,5.2C173.9,7.0 176.1,20.2 178.5,34.5L182.8,60.5L182.9,31.2L183.0,2.0L190.5,2.0L198.0,2.0L198.0,59.0L198.0,116.0L189.1,116.0L180.2,116.0L178.5,106.8C177.6,101.7 175.1,88.1 173.0,76.5L169.2,55.5L169.1,85.8L169.0,116.0L162.0,116.0L155.0,116.0L155.0,59.0ZM259.0,59.0L259.0,2.0L267.0,2.0L275.0,2.0L275.0,59.0L275.0,116.0L267.0,116.0L259.0,116.0L259.0,59.0ZM288.0,59.0L288.0,2.0L297.0,2.0L305.9,2.0L306.5,5.2C306.9,7.0 309.1,20.2 311.5,34.5L315.8,60.5L315.9,31.2L316.0,2.0L323.5,2.0L331.0,2.0L331.0,59.0L331.0,116.0L322.1,116.0L313.2,116.0L311.5,106.8C310.6,101.7 308.1,88.1 306.0,76.5L302.2,55.5L302.1,85.8L302.0,116.0L295.0,116.0L288.0,116.0L288.0,59.0ZM343.0,59.0L343.0,2.0L358.0,2.0L373.0,2.0L373.0,8.5L373.0,15.0L366.0,15.0L359.0,15.0L359.0,34.0L359.0,53.0L364.5,53.0L370.0,53.0L370.0,59.0L370.0,65.0L364.5,65.0L359.0,65.0L359.0,83.5L359.0,102.0L366.5,102.0L374.0,102.0L374.0,109.0L374.0,116.0L358.5,116.0L343.0,116.0L343.0,59.0ZM21.8,38.1C22.0,18.6 21.7,16.0 18.4,16.0C17.3,16.0 17.0,19.8 17.0,37.1L17.0,58.1L19.2,57.8C21.5,57.5 21.5,57.4 21.8,38.1Z"/><path fill="#FCC311" d="M39.5,113.8C40.2,112.0 46.0,98.9 52.3,84.7L63.8,59.0L51.9,32.3C45.4,17.7 39.8,4.8 39.4,3.8C38.9,2.0 39.5,1.9 49.1,2.2L59.3,2.5L71.6,30.0C78.4,45.1 84.0,58.1 84.0,58.9C84.0,59.6 78.3,73.0 71.4,88.6L58.8,117.0L48.4,117.0L38.1,117.0L39.5,113.8Z"/></svg>
+    <div class="kicker">Presentation guide &middot; early adopters</div>
+    <h1>Seven stages, left to right</h1>
+    <p class="sub">Each stage is one screen, the point it makes, and the question it answers.
+    Stage numbers map to the demo path in the product documentation.</p>
+    <p class="ws"><b>Two workstreams.</b> Stages 2&ndash;6 run in
+    <b>DEMO — Panda Express Monthly Report</b> — one thread, scrolled through in order. Stage 7
+    moves to <b>BigQuery Monthly Report → Self-Healing</b>. Stage 1 is Home, before either.</p>
+  </div>
+  <div class="stat"><b>12 min</b>7 stages &middot; 30 features<br>
+  full path: 19 steps &middot; inventory: 100</div>
+</div>
+
+<div class="arcwrap"><div class="arclbl">The arc</div><div class="arc"><div><span>Ask</span></div><div><span>Check</span></div><div><span>Approve</span></div><div><span>Artifact</span></div><div><span>Type</span></div><div><span>Retain</span></div><div><span>Verify</span></div></div></div><div class="flow"><div class="card">
+ <div class="chead">
+   <div class="pill"><div class="no">1</div><div class="min">1 MIN</div></div>
+   <div class="cname">Open on the ask</div>
+   <div class="cstep">Documentation step 3.1</div>
+   <div class="cws"><span>Home</span></div>
+ </div>
+ <div class="cbody">
+   <div><div class="f">Show</div><div class="v">The home screen. Do not open the template picker.</div></div>
+   <div><div class="f">Explain</div><div class="v">Work starts from one sentence. A template or a gallery agent is optional, not a prerequisite — nothing has to be configured before the first request.</div></div>
+   <div class="q"><div class="f">Answers</div><div class="v">&ldquo;What do I have to learn before this is useful?&rdquo;</div></div>
+   <div class="ids"><span>F01</span><span>F04</span></div>
+ </div></div><div class="card">
+ <div class="chead">
+   <div class="pill"><div class="no">2</div><div class="min">2 MIN</div></div>
+   <div class="cname">It checks the data first</div>
+   <div class="cstep">Documentation step 3.3</div>
+   <div class="cws"><span>DEMO — Panda Express Monthly Report</span><em>open it</em></div>
+ </div>
+ <div class="cbody">
+   <div><div class="f">Show</div><div class="v">Top of the thread: the date-range query, then the agent&rsquo;s response.</div></div>
+   <div><div class="f">Explain</div><div class="v">The agent establishes what data exists before answering, and states the limit in the thread. Asked for July, it reported the set ends 22 June and built June instead.</div></div>
+   <div class="q"><div class="f">Answers</div><div class="v">&ldquo;What happens when the data isn&rsquo;t there?&rdquo;</div></div>
+   <div class="ids"><span>F10</span><span>F11</span><span>F15</span></div>
+ </div></div><div class="card">
+ <div class="chead">
+   <div class="pill"><div class="no">3</div><div class="min">2 MIN</div></div>
+   <div class="cname">Approve the structure</div>
+   <div class="cstep">Documentation step 3.5</div>
+   <div class="cws"><span>DEMO — Panda Express Monthly Report</span><em>same thread</em></div>
+ </div>
+ <div class="cbody">
+   <div><div class="f">Show</div><div class="v">The outline card. Edit a heading, exclude a finding, reorder two rows.</div></div>
+   <div><div class="f">Explain</div><div class="v">Structure is proposed and approved before anything renders. One control governs both cost and quality — a wrong shape is caught in seconds rather than after a full run.</div></div>
+   <div class="q"><div class="f">Answers</div><div class="v">&ldquo;How much control do I have over what it writes?&rdquo;</div></div>
+   <div class="ids"><span>F19</span><span>F20</span><span>F21</span><span>F22</span><span>F23</span></div>
+ </div></div><div class="card">
+ <div class="chead">
+   <div class="pill"><div class="no">4</div><div class="min">1 MIN</div></div>
+   <div class="cname">An artifact lands</div>
+   <div class="cstep">Documentation step 3.6</div>
+   <div class="cws"><span>DEMO — Panda Express Monthly Report</span><em>same thread</em></div>
+ </div>
+ <div class="cbody">
+   <div><div class="f">Show</div><div class="v">The report card: metadata, branded header, the export controls.</div></div>
+   <div><div class="f">Explain</div><div class="v">The output is a branded, sourced, shareable document. Branding is applied at render time from organisation settings, not baked into the report.</div></div>
+   <div class="q"><div class="f">Answers</div><div class="v">&ldquo;Is this something I can put in front of a client?&rdquo;</div></div>
+   <div class="ids"><span>F24</span><span>F25</span><span>F26</span><span>F28</span><span>F29</span></div>
+ </div></div><div class="card">
+ <div class="chead">
+   <div class="pill"><div class="no">5</div><div class="min">2 MIN</div></div>
+   <div class="cname">Every slide has a type</div>
+   <div class="cstep">Documentation step 3.8</div>
+   <div class="cws"><span>DEMO — Panda Express Monthly Report</span><em>same thread</em></div>
+ </div>
+ <div class="cbody">
+   <div><div class="f">Show</div><div class="v">The deck outline card. The type tag on each row; the per-row layout dropdown.</div></div>
+   <div><div class="f">Explain</div><div class="v">Each slide&rsquo;s type is declared before it is drawn, and can be overridden one row at a time without touching the rest of the deck.</div></div>
+   <div class="q"><div class="f">Answers</div><div class="v">&ldquo;Does it just produce generic slides?&rdquo;</div></div>
+   <div class="ids"><span>F30</span><span>F31</span><span>F32</span></div>
+ </div></div><div class="card">
+ <div class="chead">
+   <div class="pill"><div class="no">6</div><div class="min">2 MIN</div></div>
+   <div class="cname">Corrections are retained</div>
+   <div class="cstep">Documentation step 3.10</div>
+   <div class="cws"><span>DEMO — Panda Express Monthly Report</span><em>same thread</em></div>
+ </div>
+ <div class="cbody">
+   <div><div class="f">Show</div><div class="v"><b>Lock as default for all future presentations</b>, then <b>Approve format</b>.</div></div>
+   <div><div class="f">Explain</div><div class="v">A corrected format becomes the standing default. The next run inherits it — no prompt is written and no model is trained.</div></div>
+   <div class="q"><div class="f">Answers</div><div class="v">&ldquo;Do I have to re-explain this every month?&rdquo;</div></div>
+   <div class="ids"><span>F36</span><span>F37</span><span>F38</span></div>
+ </div></div><div class="card">
+ <div class="chead">
+   <div class="pill"><div class="no">7</div><div class="min">2 MIN</div></div>
+   <div class="cname">It tests itself</div>
+   <div class="cstep">Documentation step 3.12</div>
+   <div class="cws"><span>BigQuery Monthly Report</span><em>switch workstream</em></div>
+ </div>
+ <div class="cbody">
+   <div><div class="f">Show</div><div class="v">The <b>Self-Healing</b> tab: validation status, a browser test running, the escalated issues.</div></div>
+   <div><div class="f">Explain</div><div class="v">The platform drives its own workflows in a real browser, applies the fixes it can, and reports the ones it cannot as escalations with Retry, Flag and Skip.</div></div>
+   <div class="q"><div class="f">Answers</div><div class="v">&ldquo;What happens when it gets something wrong?&rdquo;</div></div>
+   <div class="ids"><span>F66</span><span>F67</span><span>F68</span><span>F69</span><span>F70</span><span>F77</span><span>F79</span><span>F80</span><span>F81</span></div>
+ </div></div></div><div class="bands"><div class="band"><h2>Before you start</h2><p>Four things that break the run.</p><div class="pf"><div><b>Sign in before you start</b>The session expires after roughly an hour idle.</div><div><b>Confirm the deck is Landscape</b>Orientation persists between sessions; only a reload reverts it.</div><div><b>Leave both outline cards unapproved</b>Stages 3 and 5 depend on them. Approving removes the card.</div><div><b>Stay out of Organization &rarr; Errors</b>It lists open reports org-wide. The Self-Healing tab covers the same ground in context.</div></div></div><div class="band"><h2>If they ask</h2><p>The four questions that come up, and the honest answer.</p><div class="qa"><div><b class="qq">Can it reach our internal systems?</b><b>api_connector_tool</b> makes approved external HTTP calls and is in the library. It is configured on zero workstreams today. <span class="ref">F90</span></div><div><b class="qq">What does it cost?</b>Metered per workstream. The reference workstream: 6.8M tokens over 25 sessions, <b>$21.97</b> estimated, broken down by model. <span class="ref">F87</span></div><div><b class="qq">Who can see my work?</b>A conversation is private to the people granted access. Separately, the workstream <i>template</i> is organisation-wide by default. <span class="ref">F57</span></div><div><b class="qq">Which model is it using?</b>Chosen per workstream before anything is spent, limited to the four models the organisation has approved. An unapproved model is refused, not substituted. <span class="ref">F86</span></div></div></div></div><footer><span>PXEngine presentation guide &middot; 12-minute path &middot;
+stages map to the demo path, section 3 of the product documentation</span>
+<span>Verified 17 August 2026 against app.pxengine.ai</span></footer>
+</div></body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PXEngine — Journey / Workstream / Tool Matrix</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A; --surface:#111110; --surface2:#17171A; --line:#26262B;
+  --gold:rgb(203,183,138); --gold-dim:rgba(203,183,138,.5); --gold-bg:rgba(203,183,138,.09);
+  --txt:#EDEAE3; --txt2:#A8A39B; --txt3:#77726A;
+  --green:#7FA86A; --amber:#D9A93F; --red:#D9705E; --blue:#7E9BC4; --violet:#9B8FC7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.6}
+.wrap{max-width:1500px;margin:0 auto;padding:56px 36px 100px}
+
+header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:20px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+h1{font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--txt2);font-size:15px;max-width:820px}
+.meta{margin-top:16px;display:flex;gap:22px;flex-wrap:wrap;font-size:12px;color:var(--txt3)}
+.meta b{color:var(--txt2);font-weight:500}
+
+.spine{background:var(--gold-bg);border:1px solid rgba(203,183,138,.22);border-radius:9px;padding:16px 20px;margin:22px 0 30px;font-size:13.5px;color:var(--txt2)}
+.spine b{color:var(--gold)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#1C1C20;
+  border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--txt2);white-space:nowrap}
+
+h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:54px 0 6px;padding-top:22px;border-top:1px solid var(--line)}
+.h2sub{color:var(--txt3);font-size:13.5px;margin-bottom:20px}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);
+  font-weight:600;padding:0 12px 9px 0;border-bottom:1px solid var(--line);vertical-align:bottom}
+tbody td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);color:var(--txt2);vertical-align:top}
+tbody tr:hover{background:#0E0E10}
+
+.jrow td{background:var(--surface2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding-top:14px;padding-bottom:14px}
+.jname{color:var(--txt);font-weight:600;font-size:15px}
+.jletter{display:inline-flex;width:22px;height:22px;border-radius:5px;background:var(--gold-bg);
+  border:1px solid rgba(203,183,138,.3);color:var(--gold);font-size:11px;font-weight:700;
+  align-items:center;justify-content:center;margin-right:9px;vertical-align:1px}
+.jjob{color:var(--gold);font-style:italic;font-size:13.5px}
+.jcount{color:var(--txt3);font-size:12px;white-space:nowrap}
+
+.ws{color:var(--txt);font-weight:500;padding-left:31px !important}
+.ws small{display:block;color:var(--txt3);font-weight:400;font-size:11.5px;margin-top:2px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+.b{display:inline-block;font-size:9px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;
+  padding:2px 6px;border-radius:3px;margin:0 4px 3px 0;white-space:nowrap}
+.b.pub{background:rgba(127,168,106,.15);color:var(--green)}
+.b.beta{background:rgba(126,155,196,.15);color:var(--blue)}
+.b.rev{background:rgba(217,169,63,.15);color:var(--amber)}
+.b.nv{background:rgba(217,112,94,.15);color:var(--red)}
+.b.ma{background:rgba(155,143,199,.15);color:var(--violet)}
+
+.tl{display:flex;flex-wrap:wrap;gap:4px}
+.t{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;background:#1A1A1E;
+  border:1px solid var(--line);border-radius:4px;padding:2px 6px;color:var(--txt2);white-space:nowrap}
+.t.key{background:rgba(203,183,138,.1);border-color:rgba(203,183,138,.3);color:var(--gold)}
+.src{color:var(--txt2);font-size:12.5px}
+.src b{color:var(--txt);font-weight:600}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:6px}
+.card{border:1px solid var(--line);border-radius:9px;padding:16px 20px;background:var(--surface)}
+.card h4{font-size:14px;font-weight:600;margin-bottom:8px;color:var(--txt)}
+.card p{font-size:12.5px;color:var(--txt2);margin-bottom:8px}
+.card p:last-child{margin-bottom:0}
+.card .lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:4px}
+
+.note{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:15px 19px;margin:14px 0;font-size:13px;color:var(--txt2)}
+.note b{color:var(--gold)}
+.note.warn{border-color:rgba(217,112,94,.35)}
+.note.warn b{color:var(--red)}
+ul{list-style:none;margin-top:8px}
+li{padding:4px 0 4px 16px;position:relative;font-size:13px;color:var(--txt2)}
+li::before{content:'';position:absolute;left:0;top:12px;width:4px;height:4px;border-radius:50%;background:var(--gold-dim)}
+li b{color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">PXEngine · Journey / Workstream / Tool matrix</div>
+  <h1>Configured workstreams, grouped</h1>
+  <p class="sub">Fifteen configured workstreams collapse into five distinct customer journeys. Tools were read from each workstream configuration in the live builder, expanded stage by stage.</p>
+  <div class="meta">
+    <span><b>15</b> workstreams</span>
+    <span><b>5</b> journeys</span>
+    <span><b>23</b> tools in the org library</span>
+    <span><b>18</b> in use</span>
+    <span><b>Read</b> 15 Aug 2026</span>
+  </div>
+</header>
+
+<div class="spine">
+  <b>The tool column lists what distinguishes each workstream.</b> Two tools sit on almost every workstream and are the only two enabled org-wide —
+  <code>research_report_tool</code> and <code>presentation_generator_tool</code>. These are the shared output tools: any workstream can produce a report and a deck.
+  Gold chips mark the tools specific to a journey.
+</div>
+
+<h2>The matrix</h2>
+<p class="h2sub">Grouped by journey. Status badges are taken from the workstream registry.</p>
+
+<table>
+<thead>
+  <tr>
+    <th style="width:23%">Journey / Workstream</th>
+    <th style="width:9%">Status</th>
+    <th style="width:20%">The job</th>
+    <th style="width:33%">Distinguishing tools</th>
+    <th style="width:15%">Data source</th>
+  </tr>
+</thead>
+<tbody>
+
+<tr class="jrow">
+  <td><span class="jletter">A</span><span class="jname">Recurring performance reporting</span></td>
+  <td><span class="jcount">7 workstreams</span></td>
+  <td colspan="3"><span class="jjob">“It's the 3rd — produce the monthly numbers.”</span> &nbsp;<span class="jcount">Warehouse → analysis → report / deck. Seven variations on one shape, differing in rigour and output mix.</span></td>
+</tr>
+
+<tr>
+  <td class="ws">Topline Reporting Pipeline<small>topline_reporting_pipeline</small></td>
+  <td><span class="b ma">Multi</span><span class="b pub">Published</span></td>
+  <td>Six-stage pipeline with provenance, independent QA of every figure, and self-review until a quality bar is met</td>
+  <td><div class="tl"><span class="t key">analytics_schema</span><span class="t key">analytics_query</span><span class="t">analytics_chart_type</span><span class="t">analytics_chart_generate</span></div></td>
+  <td class="src"><b>BigQuery</b></td>
+</tr>
+<tr>
+  <td class="ws">BigQuery Insights Studio<small>bigquery_insights_studio</small></td>
+  <td><span class="b ma">Multi</span><span class="b pub">Published</span></td>
+  <td>Retrieve → research report → presentation, in three clean stages</td>
+  <td><div class="tl"><span class="t key">analytics_schema</span><span class="t key">analytics_query</span><span class="t">analytics_chart_type</span><span class="t">analytics_chart_generate</span></div></td>
+  <td class="src"><b>BigQuery</b></td>
+</tr>
+<tr>
+  <td class="ws">Campaign Data Analytics<small>campaign_data_analytics</small></td>
+  <td><span class="b pub">Published</span></td>
+  <td>Query Panda production datasets, visualise campaign metrics as interactive charts</td>
+  <td><div class="tl"><span class="t key">analytics_schema</span><span class="t key">analytics_query</span><span class="t">analytics_chart_type</span><span class="t">analytics_chart_generate</span></div></td>
+  <td class="src"><b>BigQuery</b> — Panda prod</td>
+</tr>
+<tr>
+  <td class="ws">Data Storyteller<small>data_storyteller</small></td>
+  <td><span class="b ma">Multi</span><span class="b beta">Beta</span></td>
+  <td>Raw data → narrative with charts, KPIs and an executive summary</td>
+  <td><div class="tl"><span class="t key">google_sheets</span><span class="t key">google_sheets_list</span><span class="t">analytics_schema</span><span class="t">analytics_query</span><span class="t">data_lookup</span><span class="t">summarize</span><span class="t">signal_completion</span></div></td>
+  <td class="src"><b>BigQuery</b> + <b>Google&nbsp;Sheets</b></td>
+</tr>
+<tr>
+  <td class="ws">Campaign Performance Analytics<small>campaign_performance_analytics</small></td>
+  <td><span class="b ma">Multi</span><span class="b beta">Beta</span></td>
+  <td>Top-10 performers from campaign data, delivered as visualisations plus a report</td>
+  <td><div class="tl"><span class="t key">analytics_schema</span><span class="t key">analytics_query</span><span class="t">analytics_chart_generate</span><span class="t">requirement_collection</span></div></td>
+  <td class="src"><b>BigQuery</b></td>
+</tr>
+<tr>
+  <td class="ws">Monthly Media Topline Generator<small>monthly_media_topline_generator</small></td>
+  <td><span class="b beta">Beta</span></td>
+  <td>Six sequential stages with a claims-based architecture for full traceability</td>
+  <td><div class="tl"><span class="t key">analytics_schema</span><span class="t key">analytics_query</span><span class="t">analytics_chart_generate</span><span class="t">requirement_collection</span><span class="t">summarize</span></div></td>
+  <td class="src"><b>BigQuery</b></td>
+</tr>
+<tr>
+  <td class="ws">BigQuery Monthly Report<small>bigquery_monthly_report</small></td>
+  <td><span class="b rev">Needs review</span></td>
+  <td>Comprehensive top-line monthly report with analysis and visualisations</td>
+  <td><div class="tl"><span class="t key">analytics_schema</span><span class="t key">analytics_query</span><span class="t">analytics_chart_type</span><span class="t">analytics_chart_generate</span></div></td>
+  <td class="src"><b>BigQuery</b></td>
+</tr>
+
+<tr class="jrow">
+  <td><span class="jletter">B</span><span class="jname">Diagnostic — find what's wrong</span></td>
+  <td><span class="jcount">2 workstreams</span></td>
+  <td colspan="3"><span class="jjob">“Something's off — tell me what, and what to do about it.”</span> &nbsp;<span class="jcount">Not “what happened” but “what's broken, ranked by impact, with evidence and confidence.”</span></td>
+</tr>
+
+<tr>
+  <td class="ws">Insight Discovery Engine<small>insight_discovery_recommendation_engine</small></td>
+  <td><span class="b beta">Beta</span></td>
+  <td>Runs <em>continuously</em>: anomaly detection → pattern clustering → root cause → impact scoring → prioritised recommendations</td>
+  <td><div class="tl"><span class="t key">analytics_schema</span><span class="t key">analytics_query</span><span class="t key">summarize</span><span class="t">analytics_chart_type</span><span class="t">analytics_chart_generate</span></div></td>
+  <td class="src"><b>BigQuery</b> + <b>file upload</b></td>
+</tr>
+<tr>
+  <td class="ws">Campaign Analysis &amp; Insights<small>campaign_analysis_workstream</small></td>
+  <td><span class="b ma">Multi</span><span class="b beta">Beta</span><span class="b nv">Not validated</span></td>
+  <td>Identify gaps and issues in campaign performance, then recommend fixes</td>
+  <td><div class="tl"><span class="t key">requirement_collection</span><span class="t key">analytics_query</span></div></td>
+  <td class="src"><b>BigQuery</b></td>
+</tr>
+
+<tr class="jrow">
+  <td><span class="jletter">C</span><span class="jname">Competitive &amp; market research</span></td>
+  <td><span class="jcount">4 workstreams</span></td>
+  <td colspan="3"><span class="jjob">“What's happening outside our walls?”</span> &nbsp;<span class="jcount">External research. No internal warehouse — the web is the data source.</span></td>
+</tr>
+
+<tr>
+  <td class="ws">Market Competitive Research<small>market_competitive_research</small></td>
+  <td><span class="b ma">Multi</span><span class="b pub">Published</span></td>
+  <td>Collect brand details, then research by a user-selected method: report, presentation or web search</td>
+  <td><div class="tl"><span class="t key">web_search</span><span class="t key">requirement_collection</span></div></td>
+  <td class="src"><b>Web</b></td>
+</tr>
+<tr>
+  <td class="ws">VoxTrain<small>voxtrain</small></td>
+  <td><span class="b ma">Multi</span><span class="b pub">Published</span></td>
+  <td>AI market intelligence with actionable insights, report and deck</td>
+  <td><div class="tl"><span class="t key">web_search</span><span class="t key">dispatch_job</span><span class="t">requirement_collection</span><span class="t">summarize</span><span class="t">analytics_query</span><span class="t">data_lookup</span></div></td>
+  <td class="src"><b>Web</b> + internal DB</td>
+</tr>
+<tr>
+  <td class="ws">Competitive Research Agent<small>competitive_research_agent</small></td>
+  <td><span class="b ma">Multi</span><span class="b beta">Beta</span></td>
+  <td>Competitive research on any topic — collection, analysis, synthesis</td>
+  <td><div class="tl"><span class="t key">dispatch_job</span><span class="t">requirement_collection</span><span class="t">summarize</span><span class="t">analytics_query</span><span class="t">data_lookup</span></div></td>
+  <td class="src">Internal DB<br><span style="color:var(--red)">no web_search</span></td>
+</tr>
+<tr>
+  <td class="ws">EV Research Assistant<small>ev_research_assistant</small></td>
+  <td><span class="b ma">Multi</span><span class="b beta">Beta</span></td>
+  <td>Compare electric vehicles under a budget on range, charging, warranty, price</td>
+  <td><div class="tl"><span class="t key">web_search</span><span class="t">summarize</span></div></td>
+  <td class="src"><b>Web</b></td>
+</tr>
+
+<tr class="jrow">
+  <td><span class="jletter">D</span><span class="jname">Creator discovery / sourcing</span></td>
+  <td><span class="jcount">1 workstream</span></td>
+  <td colspan="3"><span class="jjob">“Find me people who fit this brief.”</span> &nbsp;<span class="jcount">The only journey with real users on it today.</span></td>
+</tr>
+
+<tr>
+  <td class="ws">Creator Discovery Workflow<small>creator_discovery_workflow</small></td>
+  <td><span class="b ma">Multi</span><span class="b beta">Beta</span></td>
+  <td>Four gated stages — brief collection → concept → search spec → creator discovery, with approval before anything is stored</td>
+  <td><div class="tl"><span class="t key">creator_search</span><span class="t key">creator_db_search</span><span class="t">requirement_collection</span></div></td>
+  <td class="src"><b>Upfluence API</b> + <b>MongoDB</b></td>
+</tr>
+
+<tr class="jrow">
+  <td><span class="jletter">E</span><span class="jname">Bid &amp; proposal response</span></td>
+  <td><span class="jcount">1 workstream</span></td>
+  <td colspan="3"><span class="jjob">“This RFQ landed — draft our answer.”</span> &nbsp;<span class="jcount">Inbound document in, structured response out. The only journey that starts from a file.</span></td>
+</tr>
+
+<tr>
+  <td class="ws">Australian Government RFQ Response<small>aus_gov_rfq_response</small></td>
+  <td><span class="b ma">Multi</span><span class="b pub">Published</span></td>
+  <td>RFQ analysis → response strategy → proposal generation, with approval and checklist gates</td>
+  <td><div class="tl"><span class="t key">document_tool</span><span class="t key">data_lookup</span><span class="t">summarize</span><span class="t">requirement_collection</span></div></td>
+  <td class="src"><b>Uploaded docs</b> + <b>Pinecone</b></td>
+</tr>
+
+</tbody>
+</table>
+
+<h2>What that tells us</h2>
+<p class="h2sub">Five observations worth raising on Monday.</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="lbl">Concentration</div>
+    <h4>Journey A is 7 of 15 — and all seven hit the same source</h4>
+    <p>Every reporting workstream is BigQuery. The differences are rigour (Topline Pipeline self-QAs every figure; Monthly Report just renders) and orchestration (single vs multi-agent), not capability.</p>
+    <p>Seven near-duplicates is a consolidation question, not a feature list.</p>
+  </div>
+
+  <div class="card">
+    <div class="lbl">Demo choice</div>
+    <h4>We're demoing the weakest of the seven</h4>
+    <p><code>bigquery_monthly_report</code> is single-agent, the only workstream flagged <b style="color:var(--amber)">Needs review</b>, and not published.</p>
+    <p><code>bigquery_insights_studio</code> is multi-agent, <b style="color:var(--green)">Published</b>, and does exactly what we demo — retrieve, report, present. Same tools, better standing.</p>
+  </div>
+
+  <div class="card">
+    <div class="lbl">Gap</div>
+    <h4>Competitive Research Agent can't search the web</h4>
+    <p>It's the only workstream in journey C without <code>web_search_tool</code>. Its description promises "comprehensive competitive research on any topic" — but it only has internal DB access.</p>
+    <p>Either a config miss or the description overstates it. Worth checking before anyone runs it.</p>
+  </div>
+
+  <div class="card">
+    <div class="lbl">Unused capacity</div>
+    <h4>Six tools sit in the library, wired to nothing</h4>
+    <p><code>api_connector_tool</code>, <code>social_post_tool</code>, <code>search_spec_tool</code>, <code>intake_tool</code>, <code>load_workstream_context_tool</code>, <code>analytics_chart_refine_tool</code>.</p>
+    <p><code>api_connector_tool</code> is the interesting one — it's the seam Amir's internal-tools theme plugs into, and it already exists.</p>
+  </div>
+
+  <div class="card">
+    <div class="lbl">Breadth</div>
+    <h4>Only three journeys have a shared data source</h4>
+    <p>A and B run on BigQuery. D runs on Upfluence + Mongo. C is web-only. E is document-only.</p>
+    <p>So "connects to your data" currently means BigQuery, one Sheets path, and one creator database — not a general integration story.</p>
+  </div>
+
+  <div class="card">
+    <div class="lbl">Shared output</div>
+    <h4>Every journey can emit a report and a deck</h4>
+    <p><code>research_report_tool</code> and <code>presentation_generator_tool</code> are the only two tools enabled org-wide, and they appear on all 15.</p>
+    <p>That's the actual product claim: whatever the job, the output shape is consistent — which is what makes the locking story matter across journeys, not just reporting.</p>
+  </div>
+</div>
+
+<h2>Tool library</h2>
+<p class="h2sub">23 tools across seven categories. Struck-through entries are configured on no workstream.</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="lbl">Analytics · 5</div>
+    <p><code>analytics_schema_tool</code> <code>analytics_query_tool</code> <code>analytics_chart_type_tool</code> <code>analytics_chart_generate_tool</code> <span style="opacity:.45"><code>analytics_chart_refine_tool</code></span></p>
+    <p style="color:var(--txt3);font-size:12px">The BigQuery stack. Powers journeys A and B entirely.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">Content · 4</div>
+    <p><code>research_report_tool</code> <code>presentation_generator_tool</code> <code>summarize_tool</code> <span style="opacity:.45"><code>social_post_tool</code></span></p>
+    <p style="color:var(--txt3);font-size:12px">First two are the org-wide output tools.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">Search · 3</div>
+    <p><code>web_search_tool</code> <code>creator_search_tool</code> <span style="opacity:.45"><code>search_spec_tool</code></span></p>
+  </div>
+  <div class="card">
+    <div class="lbl">Data · 2 &nbsp;·&nbsp; Knowledge · 1</div>
+    <p><code>data_lookup_tool</code> <code>creator_db_search_tool</code> <code>document_tool</code></p>
+    <p style="color:var(--txt3);font-size:12px">document_tool is semantic search over Pinecone.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">Integration · 3</div>
+    <p><code>google_sheets_tool</code> <code>google_sheets_list_tool</code> <span style="opacity:.45"><code>api_connector_tool</code></span></p>
+    <p style="color:var(--txt3);font-size:12px">api_connector_tool makes GET/POST calls to approved external APIs — unused, and the obvious hook for internal tools.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">General / System / Context · 5</div>
+    <p><code>requirement_collection_tool</code> <code>dispatch_job_tool</code> <code>signal_completion_tool</code> <span style="opacity:.45"><code>intake_tool</code> <code>load_workstream_context_tool</code></span></p>
+  </div>
+</div>
+
+<div class="note warn">
+  <b>One correction to my earlier read.</b> I told you self-healing had no demo surface. That was wrong — every workstream in the builder has its own
+  <b style="color:var(--gold)">Self-Healing</b> tab, alongside Chat, Edit, Feedbacks, Usage &amp; Performance and Access. I only ever looked at the org-level error console.
+  Worth opening one before Monday: it may be the demonstrable failure path we assumed didn't exist.
+</div>
+
+<div class="note">
+  <b>Method.</b> Fifteen workstreams opened in the builder, every stage expanded, tool chips read off the config directly. Nothing inferred from descriptions.
+  Slugs are not derivable from display names — Campaign Analysis &amp; Insights is <code>campaign_analysis_workstream</code>, Insight Discovery Engine is <code>insight_discovery_recommendation_engine</code>.
+</div>
+
+</div>
+</body>
+</html>

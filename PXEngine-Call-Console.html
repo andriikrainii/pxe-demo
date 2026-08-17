@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PXEngine — Demo review</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15161A;--ink2:#4C4F57;--ink3:#83878F;--line:#E1E2E6;--line2:#EFF0F2;
+--bg:#FCFCFD;--card:#FFFFFF;--gold:#8A6D1F;--goldbg:#FBF6E8;--goldline:#E3D5AB;--mark:#FCC311}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;
+font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;
+display:flex;flex-direction:column;min-height:100%}
+.wrap{width:100%;max-width:1500px;margin:0 auto;padding:18px 34px 0;flex:1;
+display:flex;flex-direction:column}
+/* header */
+header{padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.logo{height:23px;width:auto;display:block;margin-bottom:9px}
+h1{font-size:29px;font-weight:600;letter-spacing:-.022em;line-height:1.08}
+.sub{font-size:15.5px;color:var(--ink2);margin-top:5px}
+/* beats */
+.beats{flex:1;display:flex;flex-direction:column;gap:8px;padding:15px 0 16px}
+.beat{display:grid;grid-template-columns:46px 1fr auto;gap:0 26px;align-items:center;
+background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:11px 22px;cursor:pointer;transition:border-color .12s,background .12s}
+.beat:hover{border-color:var(--ink3)}
+.beat.on{border-color:var(--gold);background:var(--goldbg);box-shadow:inset 4px 0 0 var(--gold)}
+.n{display:flex;align-items:center;gap:11px}
+.n i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--line2);
+color:var(--ink2);font-size:16px;font-weight:700;display:flex;align-items:center;
+justify-content:center;flex:none}
+.beat.on .n i{background:var(--ink);color:#fff}
+.bt{font-size:21px;font-weight:600;letter-spacing:-.015em}
+.bs{font-size:15px;color:var(--ink2);margin-top:2px}
+.acts{display:flex;gap:9px;flex:none}
+a.btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;
+text-decoration:none;color:var(--ink);background:#fff;border:1.5px solid var(--ink);
+border-radius:100px;padding:8px 18px;white-space:nowrap}
+a.btn:hover{background:var(--ink);color:#fff}
+a.btn.alt{border-color:var(--line);color:var(--ink2);font-weight:500}
+a.btn.alt:hover{background:var(--line2);color:var(--ink)}
+/* shelf */
+.shelf{border-top:1px solid var(--line);padding:12px 0 14px}
+.shelf h2{font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink3);
+font-weight:700;margin-bottom:9px}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+a.tile{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);
+border-radius:9px;padding:9px 12px;color:var(--ink);white-space:nowrap;overflow:hidden;
+text-overflow:ellipsis}
+a.tile:hover{border-color:var(--gold);background:var(--goldbg)}
+a.tile b{font-size:14.5px;font-weight:600}
+a.tile span{font-size:12px;color:var(--ink3);margin-left:6px}
+.hint{font-size:12.5px;color:var(--ink3);margin-top:9px}
+kbd{font-family:inherit;font-size:12px;font-weight:600;background:var(--line2);
+border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--ink2)}
+@media (max-width:1180px){
+ .grid{grid-template-columns:repeat(4,1fr)}
+ .beat{grid-template-columns:40px 1fr;gap:0 16px}
+ .acts{grid-column:1/-1;margin-top:12px}
+}
+</style></head><body><div class="wrap">
+
+<header>
+ <div><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 118" fill="none" role="img" aria-label="PXEngine"><path fill="#15161A" d="M1.0,59.9L1.0,2.8L14.8,3.2C30.2,3.5 33.2,4.7 36.4,11.4C38.7,16.2 38.8,60.6 36.5,64.9C34.7,68.5 29.4,71.0 22.4,71.7L17.0,72.3L17.0,94.6L17.0,117.0L9.0,117.0L1.0,117.0L1.0,59.9ZM89.6,116.1C89.3,115.6 85.7,107.8 81.6,98.7L74.3,82.2L79.1,71.3C81.8,65.4 83.9,59.8 83.9,59.0C83.9,58.2 81.8,52.6 79.1,46.7L74.3,35.9L81.9,19.0L89.4,2.0L99.2,2.0C106.4,2.0 109.0,2.3 109.0,3.2C109.0,3.9 103.5,16.8 96.9,31.8L84.7,59.1L97.4,87.4C104.3,103.0 110.0,116.0 110.0,116.4C110.0,117.4 90.2,117.1 89.6,116.1ZM219.0,114.8C215.7,113.1 213.9,111.3 212.2,108.0L210.0,103.5L210.2,57.3C210.5,12.3 210.6,11.1 212.6,8.3C216.6,2.9 220.6,1.0 228.2,1.0C237.3,1.0 242.0,3.3 244.9,9.3C246.8,13.2 247.0,15.4 247.0,30.8L247.0,48.0L239.0,48.0L231.0,48.0L231.0,32.2C231.0,15.7 230.4,12.6 227.6,14.9C226.2,16.1 226.0,21.2 226.0,58.4C226.0,81.5 226.4,101.1 226.9,101.9C227.4,102.7 228.5,103.0 229.4,102.7C231.7,101.8 231.8,83.0 229.5,83.0C228.3,83.0 228.0,81.6 228.0,76.5L228.0,70.0L237.5,70.0L247.0,70.0L247.0,93.0L247.0,116.0L243.4,116.0C241.3,116.0 239.3,115.4 238.6,114.5C237.6,113.1 237.0,113.2 233.5,115.0C228.4,117.6 224.5,117.5 219.0,114.8ZM113.0,59.0L113.0,2.0L128.0,2.0L143.0,2.0L143.0,8.5L143.0,15.0L136.0,15.0L129.0,15.0L129.0,34.0L129.0,53.0L134.5,53.0L140.0,53.0L140.0,59.0L140.0,65.0L134.5,65.0L129.0,65.0L129.0,83.5L129.0,102.0L136.5,102.0L144.0,102.0L144.0,109.0L144.0,116.0L128.5,116.0L113.0,116.0L113.0,59.0ZM155.0,59.0L155.0,2.0L164.0,2.0L172.9,2.0L173.5,5.2C173.9,7.0 176.1,20.2 178.5,34.5L182.8,60.5L182.9,31.2L183.0,2.0L190.5,2.0L198.0,2.0L198.0,59.0L198.0,116.0L189.1,116.0L180.2,116.0L178.5,106.8C177.6,101.7 175.1,88.1 173.0,76.5L169.2,55.5L169.1,85.8L169.0,116.0L162.0,116.0L155.0,116.0L155.0,59.0ZM259.0,59.0L259.0,2.0L267.0,2.0L275.0,2.0L275.0,59.0L275.0,116.0L267.0,116.0L259.0,116.0L259.0,59.0ZM288.0,59.0L288.0,2.0L297.0,2.0L305.9,2.0L306.5,5.2C306.9,7.0 309.1,20.2 311.5,34.5L315.8,60.5L315.9,31.2L316.0,2.0L323.5,2.0L331.0,2.0L331.0,59.0L331.0,116.0L322.1,116.0L313.2,116.0L311.5,106.8C310.6,101.7 308.1,88.1 306.0,76.5L302.2,55.5L302.1,85.8L302.0,116.0L295.0,116.0L288.0,116.0L288.0,59.0ZM343.0,59.0L343.0,2.0L358.0,2.0L373.0,2.0L373.0,8.5L373.0,15.0L366.0,15.0L359.0,15.0L359.0,34.0L359.0,53.0L364.5,53.0L370.0,53.0L370.0,59.0L370.0,65.0L364.5,65.0L359.0,65.0L359.0,83.5L359.0,102.0L366.5,102.0L374.0,102.0L374.0,109.0L374.0,116.0L358.5,116.0L343.0,116.0L343.0,59.0ZM21.8,38.1C22.0,18.6 21.7,16.0 18.4,16.0C17.3,16.0 17.0,19.8 17.0,37.1L17.0,58.1L19.2,57.8C21.5,57.5 21.5,57.4 21.8,38.1Z"/><path fill="#FCC311" d="M39.5,113.8C40.2,112.0 46.0,98.9 52.3,84.7L63.8,59.0L51.9,32.3C45.4,17.7 39.8,4.8 39.4,3.8C38.9,2.0 39.5,1.9 49.1,2.2L59.3,2.5L71.6,30.0C78.4,45.1 84.0,58.1 84.0,58.9C84.0,59.6 78.3,73.0 71.4,88.6L58.8,117.0L48.4,117.0L38.1,117.0L39.5,113.8Z"/></svg>
+  <h1>Demo review &mdash; agenda</h1>
+  <div class="sub">100 features catalogued &middot; a 12-minute demonstration path
+  &middot; 19 documented steps</div>
+ </div>
+</header>
+
+<div class="beats"><div class="beat on" data-i="0" data-m="2">
+ <div class="n"><i>1</i></div>
+ <div><div class="bt">Positioning and vision</div><div class="bs">What the product is, who it is for, and the decisions that shape it.</div></div>
+ <div class="acts"><a class="btn" href="PXEngine-Positioning.html" target="_blank">Positioning</a></div>
+</div><div class="beat" data-i="1" data-m="4">
+ <div class="n"><i>2</i></div>
+ <div><div class="bt">Feature inventory</div><div class="bs">100 features across 8 functional areas, each with a stable identifier.</div></div>
+ <div class="acts"><a class="btn" href="PXEngine-Feature-Inventory.html" target="_blank">Feature inventory</a></div>
+</div><div class="beat" data-i="2" data-m="4">
+ <div class="n"><i>3</i></div>
+ <div><div class="bt">Demonstration path</div><div class="bs">Seven stages, 12 minutes. Each stage answers one adopter question.</div></div>
+ <div class="acts"><a class="btn" href="PXEngine-Presentation-Guide.html" target="_blank">Wall chart</a><a class="btn alt" href="PXEngine-Screens.html" target="_blank">Screens</a></div>
+</div><div class="beat" data-i="3" data-m="5">
+ <div class="n"><i>4</i></div>
+ <div><div class="bt">Live demonstration</div><div class="bs">Data-availability reasoning, and format defaults retained across runs.</div></div>
+ <div class="acts"><a class="btn" href="https://app.pxengine.ai" target="_blank" rel="noopener">app.pxengine.ai</a><a class="btn alt" href="PXEngine-Screens.html" target="_blank">Screens</a><a class="btn alt" href="PXEngine-Product-Documentation.html" target="_blank">Documentation</a></div>
+</div><div class="beat" data-i="4" data-m="3">
+ <div class="n"><i>5</i></div>
+ <div><div class="bt">Known limitations</div><div class="bs">Internal-tool connectivity, demo workstream status, and coverage of the cut.</div></div>
+ <div class="acts"><a class="btn" href="pxengine-journey-matrix.html" target="_blank">Workstream matrix</a></div>
+</div></div><div class="shelf"><h2>Reference documents</h2><div class="grid"><a class="tile" href="PXEngine-Positioning.html" target="_blank"><b>Positioning</b><span>the argument</span></a><a class="tile" href="PXEngine-Feature-Inventory.html" target="_blank"><b>Feature inventory</b><span>100 features</span></a><a class="tile" href="PXEngine-Screens.html" target="_blank"><b>Screens</b><span>19 annotated</span></a><a class="tile" href="PXEngine-Presentation-Guide.html" target="_blank"><b>Presentation guide</b><span>seven stages</span></a><a class="tile" href="PXEngine-Demo-Run-Sheet.html" target="_blank"><b>Run sheet</b><span>19 steps</span></a><a class="tile" href="PXEngine-Product-Documentation.html" target="_blank"><b>Product documentation</b><span>19 steps</span></a><a class="tile" href="PXEngine-Demo-Cut.pptx" target="_blank"><b>Demo cut deck</b><span>12 slides</span></a><a class="tile" href="pxengine-journey-matrix.html" target="_blank"><b>Workstream matrix</b><span>15 workstreams</span></a><a class="tile" href="https://app.pxengine.ai" target="_blank" rel="noopener"><b>PXEngine</b><span>live app</span></a><a class="tile" href="https://docs.superhuman.com/d/Creator-Engine_d_IYRPp_nL5/Demo_sunJM2yq" target="_blank" rel="noopener"><b>Coda — Demo</b><span>shared</span></a><a class="tile" href="https://docs.superhuman.com/d/Creator-Engine_d_IYRPp_nL5/Presentation-guide-seven-stages_su8dIdS8" target="_blank" rel="noopener"><b>Coda — Guide</b><span>shared</span></a><a class="tile" href="https://docs.superhuman.com/d/Creator-Engine_d_IYRPp_nL5/Artifact-index_suDyPL4l" target="_blank" rel="noopener"><b>Coda — Index</b><span>shared</span></a><a class="tile" href="https://docs.superhuman.com/d/Creator-Engine_d_IYRPp_nL5/Workstream-and-tool-matrix_suhTyMNr" target="_blank" rel="noopener"><b>Coda — Matrix</b><span>shared</span></a></div><div class="hint"><kbd>&rarr;</kbd> next item &middot; <kbd>&larr;</kbd> previous &middot; select any row to move to it. Documents open in a new tab.</div></div></div><script>
+const beats=[...document.querySelectorAll('.beat')];
+let cur=0;
+function paint(){
+  beats.forEach((b,i)=>b.classList.toggle('on', i===cur));
+}
+function go(i){
+  cur=Math.max(0,Math.min(beats.length-1,i)); paint();
+  beats[cur].scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+beats.forEach(b=>b.addEventListener('click',e=>{
+  if(e.target.closest('a'))return; go(+b.dataset.i);
+}));
+addEventListener('keydown',e=>{
+  if(e.target.matches('input,textarea'))return;
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();go(cur+1);}
+  if(e.key==='ArrowLeft' ||e.key==='ArrowUp'){e.preventDefault();go(cur-1);}
+});
+paint();
+</script></body></html>

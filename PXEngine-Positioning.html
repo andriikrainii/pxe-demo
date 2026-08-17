@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PXEngine — Positioning</title>
+<link rel="icon" href="pxengine-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15161A;--ink2:#494C54;--ink3:#7C808A;--line:#DCDDE1;--line2:#EDEEF1;
+--bg:#FFFFFF;--soft:#F8F8FA;--gold:#8A6D1F;--goldbg:#FBF6E8;--goldline:#E5D8B0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;
+font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 40px 110px}
+.logo{height:25px;width:auto;display:block}
+header{padding:60px 0 28px;border-bottom:2px solid var(--ink)}
+.kicker{font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--gold);
+font-weight:700;margin:22px 0 10px}
+h1{font-size:34px;line-height:1.12;font-weight:600;letter-spacing:-.024em}
+.lede{color:var(--ink2);font-size:16.5px;margin-top:12px;max-width:720px}
+h2{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);
+font-weight:700;margin:46px 0 5px;padding-top:24px;border-top:1px solid var(--line)}
+.h2d{font-size:13.5px;color:var(--ink3);margin-bottom:16px;max-width:700px}
+.statement{font-size:21px;line-height:1.45;font-weight:500;letter-spacing:-.012em;
+max-width:830px}
+.statement b{font-weight:600}
+/* arc */
+.arc{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:26px}
+.arc div{position:relative;text-align:center}
+.arc span{display:block;font-size:13px;font-weight:600;background:var(--goldbg);
+border:1px solid var(--goldline);border-radius:100px;padding:6px 0;color:var(--gold)}
+.arc div::after{content:"\203A";position:absolute;top:4px;right:-6px;color:#C3C6CC;font-size:13px}
+.arc div:last-child::after{display:none}
+.arcnote{font-size:13px;color:var(--ink3);margin-top:11px}
+/* audience */
+.aud{display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+.aud div{padding:13px 0;border-bottom:1px solid var(--line2)}
+.aud b{display:block;font-size:15px;font-weight:600;margin-bottom:3px}
+.aud p{font-size:13.5px;color:var(--ink2)}
+/* decisions */
+.dec{border-top:1px solid var(--line)}
+.d{display:grid;grid-template-columns:34px 1fr;gap:0 20px;padding:20px 0;
+border-bottom:1px solid var(--line2)}
+.dn{font-size:13px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;
+padding-top:3px}
+.d b{display:block;font-size:17.5px;font-weight:600;letter-spacing:-.012em;margin-bottom:6px}
+.d p{color:var(--ink2);font-size:14.5px;max-width:760px}
+.ids{margin-top:9px}
+.ids a,.ids span{display:inline-block;font-size:11px;font-weight:600;color:var(--gold);
+background:var(--goldbg);border:1px solid var(--goldline);border-radius:4px;padding:1px 6px;
+margin:0 4px 4px 0;font-variant-numeric:tabular-nums;text-decoration:none}
+/* stands */
+.stands{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.st{border:1px solid var(--line);border-radius:10px;padding:17px 19px}
+.st b{display:block;font-size:29px;font-weight:600;letter-spacing:-.025em;line-height:1;
+font-variant-numeric:tabular-nums}
+.st span{display:block;font-size:12.5px;color:var(--ink3);margin-top:7px;line-height:1.45}
+/* open */
+.open{border:1px solid var(--goldline);background:var(--goldbg);border-radius:11px;
+padding:6px 22px;max-width:830px}
+.open .o{padding:15px 0;border-bottom:1px solid var(--goldline)}
+.open .o:last-child{border-bottom:0}
+.open b{display:block;font-size:15.5px;font-weight:600;margin-bottom:3px}
+.open p{font-size:13.5px;color:var(--ink2)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#fff;
+border:1px solid var(--goldline);border-radius:4px;padding:1px 4px}
+a.back{display:inline-block;margin-top:34px;font-size:13.5px;color:var(--ink2);
+text-decoration:none;border-bottom:1px solid var(--line)}
+a.back:hover{color:var(--ink);border-bottom-color:var(--ink3)}
+footer{margin-top:44px;padding-top:17px;border-top:1px solid var(--line);
+color:var(--ink3);font-size:12px}
+@media (max-width:820px){.arc,.stands{grid-template-columns:repeat(2,1fr)}
+ .aud{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<header><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 118" fill="none" role="img" aria-label="PXEngine"><path fill="#15161A" d="M1.0,59.9L1.0,2.8L14.8,3.2C30.2,3.5 33.2,4.7 36.4,11.4C38.7,16.2 38.8,60.6 36.5,64.9C34.7,68.5 29.4,71.0 22.4,71.7L17.0,72.3L17.0,94.6L17.0,117.0L9.0,117.0L1.0,117.0L1.0,59.9ZM89.6,116.1C89.3,115.6 85.7,107.8 81.6,98.7L74.3,82.2L79.1,71.3C81.8,65.4 83.9,59.8 83.9,59.0C83.9,58.2 81.8,52.6 79.1,46.7L74.3,35.9L81.9,19.0L89.4,2.0L99.2,2.0C106.4,2.0 109.0,2.3 109.0,3.2C109.0,3.9 103.5,16.8 96.9,31.8L84.7,59.1L97.4,87.4C104.3,103.0 110.0,116.0 110.0,116.4C110.0,117.4 90.2,117.1 89.6,116.1ZM219.0,114.8C215.7,113.1 213.9,111.3 212.2,108.0L210.0,103.5L210.2,57.3C210.5,12.3 210.6,11.1 212.6,8.3C216.6,2.9 220.6,1.0 228.2,1.0C237.3,1.0 242.0,3.3 244.9,9.3C246.8,13.2 247.0,15.4 247.0,30.8L247.0,48.0L239.0,48.0L231.0,48.0L231.0,32.2C231.0,15.7 230.4,12.6 227.6,14.9C226.2,16.1 226.0,21.2 226.0,58.4C226.0,81.5 226.4,101.1 226.9,101.9C227.4,102.7 228.5,103.0 229.4,102.7C231.7,101.8 231.8,83.0 229.5,83.0C228.3,83.0 228.0,81.6 228.0,76.5L228.0,70.0L237.5,70.0L247.0,70.0L247.0,93.0L247.0,116.0L243.4,116.0C241.3,116.0 239.3,115.4 238.6,114.5C237.6,113.1 237.0,113.2 233.5,115.0C228.4,117.6 224.5,117.5 219.0,114.8ZM113.0,59.0L113.0,2.0L128.0,2.0L143.0,2.0L143.0,8.5L143.0,15.0L136.0,15.0L129.0,15.0L129.0,34.0L129.0,53.0L134.5,53.0L140.0,53.0L140.0,59.0L140.0,65.0L134.5,65.0L129.0,65.0L129.0,83.5L129.0,102.0L136.5,102.0L144.0,102.0L144.0,109.0L144.0,116.0L128.5,116.0L113.0,116.0L113.0,59.0ZM155.0,59.0L155.0,2.0L164.0,2.0L172.9,2.0L173.5,5.2C173.9,7.0 176.1,20.2 178.5,34.5L182.8,60.5L182.9,31.2L183.0,2.0L190.5,2.0L198.0,2.0L198.0,59.0L198.0,116.0L189.1,116.0L180.2,116.0L178.5,106.8C177.6,101.7 175.1,88.1 173.0,76.5L169.2,55.5L169.1,85.8L169.0,116.0L162.0,116.0L155.0,116.0L155.0,59.0ZM259.0,59.0L259.0,2.0L267.0,2.0L275.0,2.0L275.0,59.0L275.0,116.0L267.0,116.0L259.0,116.0L259.0,59.0ZM288.0,59.0L288.0,2.0L297.0,2.0L305.9,2.0L306.5,5.2C306.9,7.0 309.1,20.2 311.5,34.5L315.8,60.5L315.9,31.2L316.0,2.0L323.5,2.0L331.0,2.0L331.0,59.0L331.0,116.0L322.1,116.0L313.2,116.0L311.5,106.8C310.6,101.7 308.1,88.1 306.0,76.5L302.2,55.5L302.1,85.8L302.0,116.0L295.0,116.0L288.0,116.0L288.0,59.0ZM343.0,59.0L343.0,2.0L358.0,2.0L373.0,2.0L373.0,8.5L373.0,15.0L366.0,15.0L359.0,15.0L359.0,34.0L359.0,53.0L364.5,53.0L370.0,53.0L370.0,59.0L370.0,65.0L364.5,65.0L359.0,65.0L359.0,83.5L359.0,102.0L366.5,102.0L374.0,102.0L374.0,109.0L374.0,116.0L358.5,116.0L343.0,116.0L343.0,59.0ZM21.8,38.1C22.0,18.6 21.7,16.0 18.4,16.0C17.3,16.0 17.0,19.8 17.0,37.1L17.0,58.1L19.2,57.8C21.5,57.5 21.5,57.4 21.8,38.1Z"/><path fill="#FCC311" d="M39.5,113.8C40.2,112.0 46.0,98.9 52.3,84.7L63.8,59.0L51.9,32.3C45.4,17.7 39.8,4.8 39.4,3.8C38.9,2.0 39.5,1.9 49.1,2.2L59.3,2.5L71.6,30.0C78.4,45.1 84.0,58.1 84.0,58.9C84.0,59.6 78.3,73.0 71.4,88.6L58.8,117.0L48.4,117.0L38.1,117.0L39.5,113.8Z"/></svg>
+ <div class="kicker">Positioning</div>
+ <h1>What PXEngine is, and the decisions that shape it</h1>
+ <p class="lede">A companion to the feature inventory. The inventory records what the product
+ does; this records why it is arranged that way, and what is still open.</p>
+</header>
+
+<h2>The product in one sentence</h2>
+<p class="statement">A media team asks for a monthly client report in plain language. PXEngine
+queries the live warehouse, states what data it actually found, and shows the structure it intends
+to build <b>before</b> it builds it. The team edits that structure, approves it, and receives a
+branded report and deck in which every slide carries a type &mdash; so the same sentence produces
+the same shape next month, without anyone re-explaining it.</p>
+<div class="arc"><div><span>Ask</span></div><div><span>Check</span></div><div><span>Approve</span></div><div><span>Artifact</span></div><div><span>Type</span></div><div><span>Retain</span></div><div><span>Verify</span></div></div>
+<p class="arcnote">The seven stages of that arc are the 12-minute demonstration path.
+The full documented sequence is 19 steps.</p>
+
+<h2>Who it is for</h2>
+<p class="h2d">Read from the fifteen workstreams configured today, not from an intended market.</p>
+<div class="aud"><div><b>Recurring client reporting</b><p>Seven of the fifteen configured workstreams produce a monthly performance report from the warehouse. This is the load-bearing case: the same shape, every month, per client.</p></div><div><b>Diagnostics</b><p>Two workstreams look for what is wrong rather than what happened — anomaly detection, root cause, recommendations ranked by impact.</p></div><div><b>Competitive and market research</b><p>Four workstreams work from the web rather than internal data.</p></div><div><b>Sourcing and bid response</b><p>Two more: creator discovery against an external database, and RFQ response starting from an uploaded document.</p></div></div><h2>The decisions that shape it</h2><p class="h2d">Seven choices that distinguish this from a tool that generates a document. Each one is implemented by features in the inventory, listed against it.</p><div class="dec"><div class="d"><div class="dn">01</div><div><b>Nothing expensive runs before you approve the shape</b><p>A request produces a structure first — a numbered outline for a report, a typed row per slide for a deck — and generation waits. The outline is editable, rows can be excluded and reordered. One control governs both cost and quality, because a wrong structure is caught before the render rather than after it.</p><div class="ids"><a href="PXEngine-Feature-Inventory.html#F19">F19</a><a href="PXEngine-Feature-Inventory.html#F20">F20</a><a href="PXEngine-Feature-Inventory.html#F21">F21</a><a href="PXEngine-Feature-Inventory.html#F22">F22</a><a href="PXEngine-Feature-Inventory.html#F23">F23</a><a href="PXEngine-Feature-Inventory.html#F30">F30</a><a href="PXEngine-Feature-Inventory.html#F31">F31</a><a href="PXEngine-Feature-Inventory.html#F32">F32</a></div></div></div><div class="d"><div class="dn">02</div><div><b>It states what data it does not have</b><p>The agent establishes the available range before answering. Asked for a month the warehouse does not hold, it reports the limit and produces the most recent complete month instead, in the thread, before any output exists.</p><div class="ids"><a href="PXEngine-Feature-Inventory.html#F10">F10</a><a href="PXEngine-Feature-Inventory.html#F11">F11</a><a href="PXEngine-Feature-Inventory.html#F15">F15</a></div></div></div><div class="d"><div class="dn">03</div><div><b>Structure is stored, not just content</b><p>Every slide carries a type — STATS, CHART, COMPARISON, STATEMENT, GRID, CTA and fourteen more. Because the shape is data rather than a rendering, it can be pinned, overridden per row, and reapplied on the next run.</p><div class="ids"><a href="PXEngine-Feature-Inventory.html#F34">F34</a><a href="PXEngine-Feature-Inventory.html#F35">F35</a><a href="PXEngine-Feature-Inventory.html#F36">F36</a><a href="PXEngine-Feature-Inventory.html#F41">F41</a></div></div></div><div class="d"><div class="dn">04</div><div><b>Corrections are retained</b><p>A format approved once becomes the standing default for subsequent presentations. The next run inherits it. No prompt is written and no model is trained; the correction is configuration.</p><div class="ids"><a href="PXEngine-Feature-Inventory.html#F37">F37</a><a href="PXEngine-Feature-Inventory.html#F38">F38</a></div></div></div><div class="d"><div class="dn">05</div><div><b>Presentation is separated from analysis</b><p>Branding is applied at render time from organisation settings. Switching theme re-skins output that already exists without re-querying the source or regenerating a sentence — which is what makes one system serve several clients.</p><div class="ids"><a href="PXEngine-Feature-Inventory.html#F25">F25</a><a href="PXEngine-Feature-Inventory.html#F48">F48</a><a href="PXEngine-Feature-Inventory.html#F49">F49</a><a href="PXEngine-Feature-Inventory.html#F50">F50</a><a href="PXEngine-Feature-Inventory.html#F52">F52</a></div></div></div><div class="d"><div class="dn">06</div><div><b>The platform tests itself, and escalates honestly</b><p>Each workstream drives its own workflow in a real browser, records the session, and reports what it finds. It applies the fixes it can and shows the actual edit it made. What it cannot fix is reported as an escalation with Retry, Flag and Skip rather than a green tick.</p><div class="ids"><a href="PXEngine-Feature-Inventory.html#F66">F66</a><a href="PXEngine-Feature-Inventory.html#F67">F67</a><a href="PXEngine-Feature-Inventory.html#F68">F68</a><a href="PXEngine-Feature-Inventory.html#F70">F70</a><a href="PXEngine-Feature-Inventory.html#F71">F71</a><a href="PXEngine-Feature-Inventory.html#F75">F75</a><a href="PXEngine-Feature-Inventory.html#F77">F77</a><a href="PXEngine-Feature-Inventory.html#F78">F78</a><a href="PXEngine-Feature-Inventory.html#F79">F79</a></div></div></div><div class="d"><div class="dn">07</div><div><b>Spend and access are governed per workstream</b><p>The organisation approves which models may be used, and a request for an unapproved one is refused rather than substituted. Cost, latency and error rate are metered per workstream. A conversation is private to the people granted access.</p><div class="ids"><a href="PXEngine-Feature-Inventory.html#F05">F05</a><a href="PXEngine-Feature-Inventory.html#F57">F57</a><a href="PXEngine-Feature-Inventory.html#F58">F58</a><a href="PXEngine-Feature-Inventory.html#F86">F86</a><a href="PXEngine-Feature-Inventory.html#F87">F87</a><a href="PXEngine-Feature-Inventory.html#F89">F89</a></div></div></div></div><h2>Where it stands</h2><p class="h2d">Observed in the product on 17 August 2026.</p><div class="stands"><div class="st"><b>100</b><span>features released and observable, across 8 functional areas</span></div><div class="st"><b>15</b><span>configured workstreams, grouped into 5 journeys</span></div><div class="st"><b>23</b><span>tools in the library, 18 configured on at least one workstream</span></div><div class="st"><b>2</b><span>tools enabled organisation-wide: report generation and deck generation</span></div></div><h2>Open questions</h2><p class="h2d">Three things the documentation surfaced that it cannot answer. These are product decisions.</p><div class="open"><div class="o"><b>Internal systems</b><p><code>api_connector_tool</code> makes approved external HTTP calls and sits in the library configured on zero workstreams. The seam exists; the integration work does not. Until it is done, &ldquo;connects to your data&rdquo; means BigQuery, one Google Sheets path and one creator database.</p></div><div class="o"><b>Consolidation</b><p>The seven reporting workstreams all query BigQuery and differ in rigour and orchestration rather than capability. Whether that is a catalogue or a duplication problem is a product decision, not a documentation one.</p></div><div class="o"><b>Who the product is sold to</b><p>Everything above describes an agency running client reporting. Whether the same positioning holds for an in-house team is not something the current configuration can answer.</p></div></div><a class="back" href="index.html">&larr; All documents</a>
+<footer>PXEngine positioning &middot; companion to the product documentation &middot;
+sections 1&ndash;5 evidenced by the inventory and the workstream audit &middot;
+verified 17 August 2026 against app.pxengine.ai</footer>
+</div></body></html>
